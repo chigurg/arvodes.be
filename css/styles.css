@@ -66,6 +66,7 @@ main {
     background: yellow cover;
     display: block;
     position: relative;
+    margin-top: 5rem;
 }
 
 .card {
@@ -103,3 +104,19 @@ main {
     object-fit: cover;
     height: 200px;
 }
+
+.wave {
+    display: flex;
+     gap: .5rem;
+  }
+  
+  @keyframes wave {
+      0%   {transform: translateY(0);}
+      25%  {transform: translateY(5px);}
+      50%  {transform: translateY(0);}
+      75%  {transform: translateY(-5px);}
+      100% {transform: translateY(0px);}}
+
+
+@media only screen and (max-width: 500px){}
+
