@@ -1,31 +1,31 @@
-<!doctype html>
-<!---RADIO TEST--->
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>player</title>
-    <link rel="stylesheet" href="css/player.css">
-    <script src="player/player.js" defer></script>
-</head>
-<body>
-    <div class="wrapper">
-        <audio controls id="audio-element" src="audio/test.mp3" type="audio/mp3" data-currentSong="true"></audio>
-        <div id="timeline"></div>
-        <div class="player">
-            <button alt="rew" id="rew" onclick="rewAudio();"></button>
-            <div class="controls">
-                <button alt="play" id="play" onclick="playAudio();"></button>
-                <button alt="pause" id="pause" onclick="pauseAudio();"></button>
+    <!doctype html>
+    <!---RADIO TEST--->
+    <html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <title>player</title>
+        <link rel="stylesheet" href="css/player.css">
+        <script src="player/player.js" defer></script>
+    </head>
+    <body>
+        <div class="wrapper">
+            <audio controls id="audio-element" src="audio/test.mp3" type="audio/mp3" data-currentSong="true"></audio>
+            <div id="timeline"></div>
+            <div class="player">
+                <button alt="rew" id="rew" onclick="rewAudio();"></button>
+                <div class="controls">
+                    <button alt="play" id="play" onclick="playAudio();"></button>
+                    <button alt="pause" id="pause" onclick="pauseAudio();"></button>
+                </div>
+                <button alt="fast forward" id="ffw" onclick="ffwAudio();"></button>
+                <div class="volumecontrol">
+                    <button alt="volMu" id="volMu" class="volumes"></button>
+                    <button alt="volLo" id="volLo" class="volumes"></button>
+                    <button alt="volHi" id="volHi" class="volumes" data-volLevel="1"></button>
+                    <input type="range" id="volumeslider" onclick="change_vol()">
+                </div>
+                <span class="information"> placeholder information </span>
             </div>
-            <button alt="fast forward" id="ffw" onclick="ffwAudio();"></button>
-            <div class="volumecontrol">
-                <button alt="volMu" id="volMu" class="volumes"></button>
-                <button alt="volLo" id="volLo" class="volumes"></button>
-                <button alt="volHi" id="volHi" class="volumes" data-volLevel="1"></button>
-                <input type="range" id="volumeslider" onclick="change_vol()">
-            </div>
-            <span class="information"> placeholder information </span>
         </div>
-    </div>
-</body>
+    </body>
