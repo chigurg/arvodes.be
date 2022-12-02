@@ -1,0 +1,150 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.wrapper {
+    width: 100%;
+    background-color: red;
+    display: block;
+    position: absolute;
+}
+
+.player {
+    display: flex;
+    width: 100%;
+    gap: 0.2rem;
+    
+}
+
+/*timeline*/
+#timeline {
+    position: static;
+    background-color: green;
+    height: 0.2rem;
+    width: 100%;
+    z-index: 100;
+}
+
+#timeline::after { /*timeline  head*/
+    content: "";
+    display: block;
+    position: absolute;
+    width: 0.4rem;
+    height: 0.4rem;
+    border-radius: 0.4rem;
+
+    background-color: blue;
+
+    top: -0.1rem;
+    left: -0.1rem;
+
+    cursor: pointer;
+}
+
+#timeline::before {  /*timeline*/
+    content: "";
+    display: block;
+
+    background-color: yellow;
+    height: 0.2rem;
+    width: 0rem;
+    z-index: 200;
+}
+
+#timeline:active::before,
+#timeline:active::after {
+    animation: 120s timeline linear
+}
+
+/*BUTTONS*/
+button {
+    width: 2rem;
+    height: 2rem;
+    cursor: pointer;
+    background-size: cover;
+    background-color: transparent;
+    border: none;
+}
+
+/*ffw rew*/
+#rew {
+    background-image: url(/player/images/rewind.png); 
+}
+
+#ffw {
+    background-image: url(/player/images/fast-forward.png);
+}
+
+/*play pause controls*/
+.controls {
+    display: block;
+    position: relative;
+    width: 2rem;
+}
+
+#play {
+    display: block;
+    position: absolute;
+    background-image: url(/player/images/play.png);
+}
+
+#pause {
+    display: none;
+    position: absolute;
+    background-image: url(/player/images/pause.png);
+}
+
+/*volume etc*/
+.volumecontrol {
+    background: red;
+    display: block;
+    position: relative;
+    width: 2rem;
+}
+
+.volumes {
+    position: absolute;
+    display: none;
+    width: 2rem;
+}
+
+img[data-volLevel="1"] {
+    display: block;
+}
+
+#volumeslider {
+    position: relative;
+    left: 5rem;
+}
+
+#volMu {background-image: url(/player/images/mute.png);}
+#volLo {background-image: url(/player/images/low-volume.png);}
+#volHi {background-image: url(/player/images/high-volume.png);}
+/*--------------------------------------------------------------------------------*/
+.information {
+    display: block;
+    position: absolute;
+    right: 2rem;
+    top: 0.5rem;
+}
+
+@keyframes timeline {
+    0% {
+        width: 0vw;
+    }
+    100% {
+        width: 100vw;
+    }
+}
+
+@keyframes timelineHead {
+    0% {
+        transform: translateX(0vw)
+    } 100% {
+        transform: translateX(100vw)
+    }
+}

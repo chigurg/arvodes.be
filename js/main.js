@@ -21,3 +21,4 @@ for (let i = 0; i < waveArray.length; i++) {
 var waveString = waveArray.join(" ");
 
 document.querySelector(".wave").innerHTML = waveString;
+
