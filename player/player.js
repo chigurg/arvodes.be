@@ -68,7 +68,7 @@ function mute(){
         player.volume = 0;
         volumeBar.value = 0;
     } else if(volumeValue < 1) {
-        
+        //nog een voorwaarde toevoegen zodat de knop ook terug unmute met oldVol
     }
 }
 
