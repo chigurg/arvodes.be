@@ -29,36 +29,6 @@
     z-index: 100;
 }
 
-#timeline::after { /*timeline  head*/
-    content: "";
-    display: block;
-    position: absolute;
-    width: 0.4rem;
-    height: 0.4rem;
-    border-radius: 0.4rem;
-
-    background-color: blue;
-
-    top: -0.1rem;
-    left: -0.1rem;
-
-    cursor: pointer;
-}
-
-#timeline::before {  /*timeline*/
-    content: "";
-    display: block;
-
-    background-color: yellow;
-    height: 0.2rem;
-    width: 0rem;
-    z-index: 200;
-}
-
-#timeline:active::before,
-#timeline:active::after {
-    animation: 120s timeline linear
-}
 
 /*BUTTONS*/
 button {
@@ -68,16 +38,13 @@ button {
     background-size: cover;
     background-color: transparent;
     border: none;
+    filter: invert(100%);
+    -webkit-filter: invert(100%);
 }
 
 /*ffw rew*/
-#rew {
-    background-image: url(/player/images/rewind.png); 
-}
-
-#ffw {
-    background-image: url(/player/images/fast-forward.png);
-}
+#rew {background-image: url(/player/images/rewind.png);}
+#ffw {background-image: url(/player/images/fast-forward.png);}
 
 /*play pause controls*/
 .controls {
@@ -100,33 +67,133 @@ button {
 
 /*volume etc*/
 .volumecontrol {
-    background: red;
-    display: block;
-    position: relative;
-    width: 2rem;
+    width: 50%;
+    display: flex;
+    gap: 1rem;
+
 }
-/*cock*/
 
 .volumes {
-    position: absolute;
+    position: relative;
     display: none;
     width: 2rem;
 }
 
-img[data-volLevel="1"] {
+.volBut{
+    background-color: aqua;
+    background-size: cover;
+}
+
+.volumes[data-volLevel="1"] {
     display: block;
 }
 
-#volumeslider {
-    position: relative;
-    left: 5rem;
+#volMu, #volLo, #volHi {
+    background-size: cover;
+    filter: invert(100%);
+    -webkit-filter: invert(100%);
 }
 
 #volMu {background-image: url(/player/images/mute.png);}
 #volLo {background-image: url(/player/images/low-volume.png);}
 #volHi {background-image: url(/player/images/high-volume.png);}
-/*--------------------------------------------------------------------------------*/
-.information {
+
+#slideContainer {
+    contain: content;
+    width: 0rem;
+}
+
+#volumeslider {
+    position: absolute;
+    height: 5px;
+    width: 4rem;
+    top: 40%;
+}
+
+.volumecontrol:hover > #slideContainer{
+    width: 10rem;
+}
+
+#volumeslider {
+    -webkit-appearance: none;
+    background: rgba(255, 255, 255, 0.6);
+    border-radius: 3px;
+    background-image: linear-gradient(white, white);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+  
+
+#volumeslider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    height: 1rem;
+    width: 1rem;
+    border-radius: 1rem;
+    background: white;
+    cursor: pointer;
+    transition: background .3s ease-in-out;
+    border: none;
+}
+
+#volumeslider::-moz-range-thumb {
+    -webkit-appearance: none;
+    height: 1rem;
+    width: 1rem;
+    border-radius: 1rem;
+    background: white;
+    cursor: pointer;
+    transition: background .3s ease-in-out;
+    border: none;
+}
+
+#volumeslider::-ms-thumb {
+    -webkit-appearance: none;
+    height: 1rem;
+    width: 1rem;
+    border-radius: 1rem;
+    background: white;
+    cursor: pointer;
+    transition: background .3s ease-in-out;
+    border: none;
+}
+
+#volumeslider::-webkit-slider-thumb:hover {
+    background: rgb(243, 243, 243);
+}
+
+#volumeslider::-moz-range-thumb:hover {
+    background: rgb(243, 243, 243);
+}
+
+#volumeslider::-ms-thumb:hover {
+    background: rgb(243, 243, 243);
+}
+
+
+#volumeslider::-webkit-slider-runnable-track  {
+    -webkit-appearance: none;
+    box-shadow: none;
+    border: none;
+    background: transparent;
+}
+
+#volumeslider::-moz-range-track {
+    -webkit-appearance: none;
+    box-shadow: none;
+    border: none;
+    background: transparent;
+}
+
+#volumeslider::-ms-track {
+    -webkit-appearance: none;
+    box-shadow: none;
+    border: none;
+    background: transparent;
+}
+  
+---------------------------------------------*/
+
+  .information {
     display: block;
     position: absolute;
     right: 2rem;

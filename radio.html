@@ -10,8 +10,8 @@
     </head>
     <body>
         <div class="wrapper">
-            <audio controls id="audio-element" src="audio/test.mp3" type="audio/mp3" data-currentSong="true"></audio>
-            <div id="timeline"></div>
+            <audio controls id="audio-element" src="audio/test.mp3" type="audio/mp3" data-currentSong="true" step="0.01"></audio>
+            <div id="tlWrap"><input type="range" id="timeline"></div>
             <div class="player">
                 <button alt="rew" id="rew" onclick="rewAudio();"></button>
                 <div class="controls">
@@ -20,12 +20,15 @@
                 </div>
                 <button alt="fast forward" id="ffw" onclick="ffwAudio();"></button>
                 <div class="volumecontrol">
-                    <button alt="volMu" id="volMu" class="volumes"></button>
-                    <button alt="volLo" id="volLo" class="volumes"></button>
-                    <button alt="volHi" id="volHi" class="volumes" data-volLevel="1"></button>
-                    <input type="range" id="volumeslider" onclick="change_vol()">
+                    <div class="volBut" onclick="mute()">
+                        <button alt="volMu" id="volMu" class="volumes"></button>
+                        <button alt="volLo" id="volLo" class="volumes" ></button>
+                        <button alt="volHi" id="volHi" class="volumes" data-volLevel="1"></button></div>
+                    <div id="slideContainer">
+                        <input type="range" id="volumeslider" oninput="change_vol()">
+                    </div>
                 </div>
-                <span class="information"> placeholder information </span>
-            </div>
+            <div id="progress"><output id="duration"></output></div>
+            <span class="information"> placeholder information </span>
         </div>
     </body>

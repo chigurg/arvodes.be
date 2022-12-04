@@ -3,14 +3,13 @@ document.addEventListener("DOMContentLoaded", function() { startplayer(); }, fal
 var player;
 var playButton;
 var pauseButton;
+var progressEl = document.getElementById('timeline');
+playButton = document.getElementById("pause");
+pauseButton = document.getElementById("play");
+player = document.getElementById('audio-element');
 
 //functions play pause etc
-function startplayer() { 
-    player = document.getElementById('audio-element');
-    playButton = document.getElementById("pause");
-    pauseButton = document.getElementById("play");
-    player.controls = false; 
-}
+function startplayer() { player.controls = false; }
 
 function playAudio() {
     player.play();
@@ -25,32 +24,64 @@ function pauseAudio() {
 }
 
 // function stop_aud() {player.pause(); player.currentTime = 0;}
+var volumeBar = document.getElementById("volumeslider");
 var volumeValue = document.getElementById("volumeslider").value;
+volumeValue = 100;
+
 
 var iconVolMu = document.getElementById("volMu");
 var iconVolLo = document.getElementById("volLo");
 var iconVolHi = document.getElementById("volHi");
 
-function change_vol(){ 
-    if (volumeValue <= 0){
-        iconVolMu.dataset.volLevel = "active";
-        iconVolLo.dataset.volLevel = "inactive";
-        iconVolHi.dataset.volLevel = "inactive";
-    } else if (volumeValue <= 0.33) {
-        iconVolMu.dataset.volLevel = "inactive";
-        iconVolLo.dataset.volLevel = "active";
-        iconVolHi.dataset.volLevel = "inactive";
-    } else if (volumeValue > 33) {
-        iconVolMu.dataset.volLevel = "inactive";
-        iconVolLo.dataset.volLevel = "inactive";
-        iconVolHi.dataset.volLevel = "active";
-    }
-    return volumeValue
+var slider = document.getElementById("volumeslider");
+
+function muteIcon() {
+    iconVolMu.setAttribute('data-volLevel', '1');
+    iconVolLo.removeAttribute('data-volLevel');
+    iconVolHi.removeAttribute('data-volLevel');
 }
 
+function change_vol(){
+    volumeValue = document.getElementById("volumeslider").value;
+    slider.style.backgroundSize = volumeValue + '% 100%';
+
+    if (volumeValue < 1){
+        muteIcon();
+    } else if (volumeValue < 40) {
+        iconVolMu.removeAttribute('data-volLevel');
+        iconVolLo.setAttribute('data-volLevel', '1');
+        iconVolHi.removeAttribute('data-volLevel');
+    } else if (volumeValue > 30) {
+        iconVolMu.removeAttribute('data-volLevel');
+        iconVolLo.removeAttribute('data-volLevel');
+        iconVolHi.setAttribute('data-volLevel', '1');
+    }
+    player.volume = volumeValue/100;
+    return;
+}
+
+function mute(){
+    var oldVol;
+    oldVol = player.volume;
+    if(volumeValue > 1){
+        muteIcon();
+        player.volume = 0;
+        volumeBar.value = 0;
+    } else if(volumeValue < 1) {
+        
+    }
+}
+
+let mouseDownOnSlider = false;
+player.addEventListener("timeupdate", () => {
+    if (!mouseDownOnSlider) {
+      progressEl.value = player.currentTime / player.duration * 100;
+    }
+});
+
+progressEl.addEventListener("change", () => {
+    const pct = progressEl.value / 100;
+    player.currentTime = (player.duration || 0) * pct;
+});
+
 startplayer();
-
-muState = iconVolMu.dataset.volLevel;
-
-
-
