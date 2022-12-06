@@ -9,7 +9,11 @@ pauseButton = document.getElementById("play");
 player = document.getElementById('audio-element');
 
 //functions play pause etc
-function startplayer() { player.controls = false; }
+function startplayer() { 
+    player.controls = false;
+    volumeValue = document.getElementById("volumeslider").value;
+    slider.style.backgroundSize = volumeValue + '% 100%';
+}
 
 function playAudio() {
     player.play();
@@ -41,34 +45,44 @@ function muteIcon() {
     iconVolHi.removeAttribute('data-volLevel');
 }
 
+function loIcon() {
+    iconVolMu.removeAttribute('data-volLevel');
+    iconVolLo.setAttribute('data-volLevel', '1');
+    iconVolHi.removeAttribute('data-volLevel');
+}
+
+function hiIcon() {
+    iconVolMu.removeAttribute('data-volLevel');
+    iconVolLo.removeAttribute('data-volLevel');
+    iconVolHi.setAttribute('data-volLevel', '1');
+}
+
+function change_volIcon(){
+    if (volumeValue < 1){ muteIcon();
+    } else if (volumeValue < 40) { loIcon()
+    } else if (volumeValue > 30) { hiIcon(); }
+}
+
 function change_vol(){
     volumeValue = document.getElementById("volumeslider").value;
     slider.style.backgroundSize = volumeValue + '% 100%';
-
-    if (volumeValue < 1){
-        muteIcon();
-    } else if (volumeValue < 40) {
-        iconVolMu.removeAttribute('data-volLevel');
-        iconVolLo.setAttribute('data-volLevel', '1');
-        iconVolHi.removeAttribute('data-volLevel');
-    } else if (volumeValue > 30) {
-        iconVolMu.removeAttribute('data-volLevel');
-        iconVolLo.removeAttribute('data-volLevel');
-        iconVolHi.setAttribute('data-volLevel', '1');
-    }
+    change_volIcon();
     player.volume = volumeValue/100;
     return;
 }
 
+var oldVol;
 function mute(){
-    var oldVol;
-    oldVol = player.volume;
-    if(volumeValue > 1){
+    if(player.volume > 0.01){
+        oldVol = player.volume;
         muteIcon();
         player.volume = 0;
         volumeBar.value = 0;
-    } else if(volumeValue < 1) {
-        //nog een voorwaarde toevoegen zodat de knop ook terug unmute met oldVol
+        change_vol();
+    } else {
+        player.volume = oldVol;
+        volumeBar.value = oldVol * 100;
+        change_vol();
     }
 }
 
