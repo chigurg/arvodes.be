@@ -16,6 +16,7 @@
 
 body {
     font-family: 'Bookman Old Style', sans-serif;
+    height: 200vh;
 }
 
 header {
@@ -120,3 +121,12 @@ main {
 
 @media only screen and (max-width: 500px){}
 
+
+#radio {
+    position: fixed;
+    width: 100%;
+    bottom: 0%;
+    z-index: 100;
+    margin: 0px;
+    padding: 0px;
+}
