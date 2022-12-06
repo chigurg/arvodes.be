@@ -8,27 +8,33 @@
 
 .wrapper {
     width: 100%;
-    background-color: red;
     display: block;
     position: absolute;
 }
 
-.player {
-    display: flex;
-    width: 100%;
-    gap: 0.2rem;
-    
-}
 
 /*timeline*/
+#tlWrap {
+    position: relative;
+    width: 100%;
+}
+
 #timeline {
-    position: static;
+    position: absolute;
     background-color: green;
     height: 0.2rem;
     width: 100%;
     z-index: 100;
 }
 
+.player {
+    position: sticky;
+    padding-top: 6px;
+    display: flex;
+    width: 100%;
+    gap: 0.2rem;
+    background-color: rgb(32,34,37);
+}
 
 /*BUTTONS*/
 button {
@@ -70,18 +76,12 @@ button {
     width: 50%;
     display: flex;
     gap: 1rem;
-
 }
 
 .volumes {
     position: relative;
     display: none;
     width: 2rem;
-}
-
-.volBut{
-    background-color: aqua;
-    background-size: cover;
 }
 
 .volumes[data-volLevel="1"] {
@@ -193,11 +193,10 @@ button {
   
 ---------------------------------------------*/
 
-  .information {
+.information {
     display: block;
-    position: absolute;
-    right: 2rem;
-    top: 0.5rem;
+    position: relative;
+    text-align: right;
 }
 
 @keyframes timeline {

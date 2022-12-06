@@ -9,7 +9,11 @@ please just dont fuck with anything you find here like don't be an asshole
 
 ## to do
 ### player
-- enable timeline progress
-- timeline seeking
-- timeline seeking progress 'bubble' with timecode
-- duration with progress counter to the right of the player (with the output thing)
+ - [x] enable timeline progress 
+ - [x] timeline seeking
+ - [ ] timeline seeking progress 'bubble' with timecode
+ - [ ] duration with progress counter to the right of the player (with the output thing)
+ - [ ] rewind and ffw functionality
+ - [ ] playlist (virtual only)
+ - [ ] information
+ - [ ] information styling (links?)
