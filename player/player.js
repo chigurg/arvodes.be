@@ -89,4 +89,8 @@ progressEl.addEventListener("change", () => {
     player.currentTime = (player.duration || 0) * pct;
 });
 
+var playlist = [];
+playlist = Array.prototype.map.call(document.querySelector("#playlist").children, (e => e.textContent))
+
+
 startplayer();
