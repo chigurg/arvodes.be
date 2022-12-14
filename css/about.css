@@ -1,0 +1,134 @@
+@import url('https://fonts.cdnfonts.com/css/sf-pro-display');
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+  height: 400vh;
+  font-family: 'SF Pro Display', sans-serif;
+}
+
+/*-------NAVBAR------*/
+h3 {
+  position: fixed;
+  font-size: 2rem;
+  z-index: 999;
+  cursor: pointer;
+  top: 2rem;
+}
+nav {
+  position: fixed;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 250ms ease-in 0ms;
+  background: #FFFBC1;
+}
+
+nav ul {
+  color: #FEBE8C;
+  font-size: 4rem;
+  width: 100vw;
+  height: 100%;
+  padding-top: 7rem;
+  list-style-type: none;
+  text-decoration: none;
+}
+
+nav ul li {
+  transform: scaleY(0);
+  transition: transform 200ms ease-out;
+  transform-origin: top;
+ 
+
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #FEBE8C;
+}
+
+nav ul li a:hover{
+    color: #f38735e8;
+}
+
+h1 {
+  padding: 4px;
+  text-align: center;
+  background: lightgreen;
+  color: green;
+  font-size: 4rem;
+  
+}
+
+.content {
+  display: flex;
+  padding-top: 10px;
+}
+
+.content {
+  background: pink;
+  color: red;
+}
+main {
+  width: 70%;
+  padding-right: 5%;
+  height: 500px;
+}
+
+side {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 10px;
+  width: 23%;
+  height: 140px;
+  color: #fff;
+  background: #30b298;
+  
+  overflow: hidden;
+  
+  opacity: 1;
+  transition: opacity 100ms linear;
+}
+
+side img {
+  width: 100%;
+  z-index: 100;
+}
+
+.box {
+  background: lightblue;
+  color: blue;
+  height: 400px;
+  display: flex;
+  flex: 1 0;
+  gap: 1rem;
+}
+
+#scroll-element {
+  text-
+}
+
+.grower {
+  height: 140vh;
+  width: 100%;
+  background: lightgreen;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+#bol {
+  background: #FEBE8C;
+  height: 100px;
+  width: 100px;
+  border-radius: 100px;
+}
