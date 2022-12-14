@@ -3,43 +3,30 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>HALLO DAG IEDEREEN</title>
-    <link rel="stylesheet" href="css/styles.css">
-    <script src="js/main.js" defer></script>
+    <title>home</title>
+    <link rel="stylesheet" href="css/index.css">
+    <script src="/js/index.js" defer></script>
 </head>
+<!---------Navigator------------->
 <body>
-
-
-<header>
-    <div class="logo"><h1>arvodes</h1></div>
+  <div id="wrapper">
+    <div class="background" id="background"></div>
+    <h1><a id="logo" href="about.html">arvodes.be</a></h1>
     <nav>
-        <ul>
-            <li><a href="index.html">home</a></li>
-            <li><a href="project.html">projektekes</a></li>
-            <li><a href="music.html">sounds</a></li>
-            <li><a href="about.html">about</a></li>
-        </ul>
+      <ul id="list">
+        <li><a onclick="blips()" onmouseover="hoverNav(1)">blips</a></li>
+        <li><a onclick="blops()" onmouseover="hoverNav(2)">blops</a></li>
+        <li><a onclick="news()" onmouseover="hoverNav(3)">news</a></li>
+        <li><a onclick="links()" onmouseover="hoverNav(4)">links</a></li>
+        <li><a onclick="about()" onmouseover="hoverNav(5)">about</a></li>
+      </ul>
     </nav>
-</header>
-
-<main>
-    <div class="bignav">
-        <ul>
-            <li><a href="project.html">projektekes</a><p>lijstje met al mijn projecten die geen muziek zijn</p></li>
-            <li><a href="music.html">sounds</a><p>lijstje met al mijn projecten die muziek zijn</p></li>
-            <li><a href="about.html">about</a></li>
-        </ul>
+    
+    <div id="container">
+      <div id="title"><h3>title</h3></div>
+      <div id="content"></div>
     </div>
-    <div class="card">
-        <h2 class="quote">i am a very productive and socially capable person. also i am very employable.</h2>
-        <img id="facePic" src="images/face.jpg" alt="" title="my face, of which i'm mildly insecure but i guess its not that bad like some people are born with faces that are like actually unfixable. itd be great if someone would employ me for a full time job so i could get started in my career and maybe even get some surgery to fix my mug" onclick="alert('dont touch my face like rude')">
-    </div>
-</main>
-<aside></aside>
-<footer></footer>
-
-
-
-
-</body>  
-</html>
+    <button id="fwd" onclick="link()"></button>
+    <button id="back" onclick="back()"></button>
+  </div>
+</body>

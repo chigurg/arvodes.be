@@ -16,7 +16,6 @@
 
 body {
     font-family: 'Bookman Old Style', sans-serif;
-    height: 200vh;
 }
 
 header {
@@ -122,11 +121,17 @@ main {
 @media only screen and (max-width: 500px){}
 
 
-#radio {
+#radioBox {
     position: fixed;
+    background-color: rgb(32,34,37);
     width: 100%;
-    bottom: 0%;
-    z-index: 100;
-    margin: 0px;
-    padding: 0px;
+    bottom: 0px;
+}
+
+
+
+#radio {
+    width: 100%;
+    height: 42px;
+    border: none;
 }
