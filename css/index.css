@@ -1,0 +1,187 @@
+@import url('https://fonts.cdnfonts.com/css/sf-pro-display');
+
+*,
+*::before,
+*::after{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'SF Pro Display', sans-serif;
+  overflow:hidden;
+  width: 100vw;
+  height: 100vh;
+}
+
+h1 {
+  display: block;
+  left: 2rem;
+  position: relative;
+  z-index: 999;
+  color: white;
+  mix-blend-mode: difference;
+  
+  transition: color 5s ease-out;
+}
+
+h1 a {
+  text-decoration: none;
+  color: white;
+  transition: color 5s ease-out;
+  opacity: 1;
+}
+
+h1 a:hover {color: black; opacity: 0.8; transition: opacity 300ms linear;}
+
+.background {
+  display: block;
+  position: absolute;
+  width: 400%;
+  height: 400%;
+  background-size: cover;
+  transform: translate(0%, 0%);
+  transition: transform 1000ms ease-out 10ms;
+
+  background-color: #797979;
+  opacity: 0.8;
+  background-image:  repeating-radial-gradient( circle at 0 0, transparent 0, #797979 20px ), repeating-linear-gradient( #00000055, #000000 );
+  
+  z-index: 10;
+  animation: float 80s infinite linear alternate;
+}
+
+@keyframes float{
+  0% {top: -100%; left: -100%;}
+  100% {top: -20%; left: -20%;}
+}
+
+
+nav {
+  position: absolute;
+  display: block;
+  width: 200%;
+  height: 200%;
+  z-index: 100;
+}
+
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 5rem;
+  flex-direction: column;
+  position: relative;
+  transform: translate(10%, 50%);
+  transition: transform 500ms ease-in-out;
+}
+nav ul a {
+  position: absolute;
+  text-decoration: none;
+  font-size: 5rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.4);
+  transition: all 200ms ease-out 10ms;
+  transform-property: translate, color;
+  
+  cursor: pointer;
+}
+
+ul li a:hover {
+  color: rgba(255, 255, 255, 0.8);  
+  transform: translate(10%, 0%) scale(130%);
+  transition: all 200ms ease-in 10ms;
+  transform-property: translate, color;
+}
+
+button{
+  cursor: pointer;
+  display: block;
+  position: absolute;
+
+}
+
+#back {
+  height: 3.5rem;
+  width: 3.5rem;
+  background: transparent no-repeat;
+  background-image: url(/images/left_w.png);
+  background-size: cover;
+  border: 0.4rem dashed hsla(0, 0%, 60%, 0.61);
+
+  top: 90%;
+  left: 1rem;
+  z-index: 100;
+  mix-blend-mode: difference;
+  transform: translateX(-200%);
+  transition: transform 200ms;
+}
+
+#fwd{
+  top: 80%;
+  right: 2rem;
+  height: 8rem;
+  width: 12rem;
+  z-index: 100;
+  background-color: white;
+  background:url(/images/right_w.png);
+  background-size: cover;
+
+
+  border: none;
+  mix-blend-mode: difference;
+  z-index: 100;
+  transform: translateX(300%);
+  transition: transform 800ms ease-in-out;
+}
+
+
+#container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  flex-wrap: none;
+  
+  position: absolute;
+  right: 3rem;
+  top: 3rem;  
+  width: 75vw;
+  height: auto;
+  padding-right: 1rem;
+  
+  border: 0.5rem dashed gray;
+  align-items: stretch;
+  z-index: 10;
+  text-align: right;
+  
+
+  transform: translate(150%, 150%);
+  transition: transform 500ms ease-in-out;
+}
+
+#title {
+  display: block;
+  border: 0.1rem dashed rgba(0,0,0,0.1);
+}
+
+#title h3 {
+  font-size: 5rem;
+  color: lightgray;
+}
+
+#content {
+  flex-grow: 1;
+  font-size: 3rem;
+  color: rgb(196, 196, 196);
+  text-shadow: lightblue 2px 4px 2px;
+}
+
+@media only screen and (max-width: 800px) {
+  #container{
+    width: 90%;
+    right: 5%;
+  }
+  #content {font-size: 2.5rem;}
+  h1{left: 0px;}
+}
