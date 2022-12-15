@@ -17,7 +17,7 @@ var list = document.getElementById("list");
 var liArray = Array.from(list.querySelectorAll("li"));
 
 
-var menuOn = false;
+var menuOn = true;
 function menu() {
   if (menuOn === true) {
     menuOn = false;
