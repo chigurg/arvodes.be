@@ -46,7 +46,9 @@ h1 a:hover {color: black; opacity: 0.8; transition: opacity 300ms linear;}
 
   background-color: #797979;
   opacity: 0.8;
-  background-image:  repeating-radial-gradient( circle at 0 0, transparent 0, #797979 20px ), repeating-linear-gradient( #00000055, #000000 );
+  background-image: repeating-radial-gradient(circle at 0 0, transparent 0, #797979 20px), repeating-linear-gradient(#00000055, #000000);
+  background-image: -moz-radial-gradient (circle at 0 0, transparent 0, #797979 20px), -moz-repeating-radial-gradient (#00000055, #000000);
+
   
   z-index: 10;
   animation: float 80s infinite linear alternate;
@@ -56,7 +58,6 @@ h1 a:hover {color: black; opacity: 0.8; transition: opacity 300ms linear;}
   0% {top: -100%; left: -100%;}
   100% {top: -20%; left: -20%;}
 }
-
 
 nav {
   position: absolute;
