@@ -189,6 +189,20 @@ button{
 .links-list a:hover { text-decoration: underline; }
 .content iframe, #content iframe { border: 0; max-width: 420px; width: 100%; height: 180px; }
 
+/* Make the Listen button flow inside the content instead of being absolutely positioned */
+#content #open-radio {
+  position: static !important;
+  display: inline-block !important;
+  margin-top: 1rem;
+  font-size: 1rem;
+  padding: 0.8rem 1rem;
+  border-radius: 6px;
+  background: #222;
+  color: #fff;
+  border: 0;
+  cursor: pointer;
+}
+
 @media only screen and (max-width: 800px) {
   #container{
     width: 90%;

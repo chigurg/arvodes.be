@@ -1,13 +1,16 @@
 <!doctype html>
+<html>
 <!---RADIO TEST--->
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="/css/player.css">
+    <script src="/player/player.js" defer></script>
+    <style>html,body{margin:0;padding:0;background:transparent;height:100%;}</style>
 </head>
-<link rel="stylesheet" href="/css/player.css">
-<script src="/player/player.js" defer></script>
+<body>
 <div class="wrapper">
-    <audio controls id="audio-element" src="/audio/test.mp3" type="audio/mp3" data-currentSong="true" step="0.01"></audio>
+    <audio id="audio-element" src="/audio/test.mp3" type="audio/mp3" data-currentSong="true" step="0.01" loop></audio>
     <div id="tlWrap"><input type="range" id="timeline"></div>
     <div class="player">
         <button alt="rew" id="rew" onclick="rewAudio();"></button>
@@ -26,5 +29,7 @@
             </div>
         </div>
     <div id="progress"><output id="duration"></output></div>
-    <span class="information"><p style="color: white;"> placeholder information </p></span>
+    <span class="information"><p class=infotext; style="color: white; opacity: 0.9;"> ARVO 2 hr mix </p></span>
 </div>
+</body>
+</html>
