@@ -20,6 +20,16 @@ h3 {
   z-index: 999;
   cursor: pointer;
   top: 2rem;
+  opacity: 0;
+  transform: translateY(-6px);
+  transition: opacity 180ms ease, transform 180ms ease;
+  pointer-events: none;
+}
+
+h3.visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
 }
 nav {
   position: fixed;
@@ -27,6 +37,7 @@ nav {
   transform-origin: left;
   transition: transform 250ms ease-in 0ms;
   background: #FFFBC1;
+  pointer-events: none;
 }
 
 nav ul {
@@ -54,6 +65,13 @@ nav ul li a {
 
 nav ul li a:hover{
     color: #f38735e8;
+}
+
+/* When nav is opened make it interactive and above other content */
+nav.open {
+  transform: scaleX(1);
+  z-index: 998;
+  pointer-events: auto;
 }
 
 h1 {

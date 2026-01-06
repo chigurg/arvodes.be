@@ -1,6 +1,7 @@
 var bol = document.getElementById("bol");
 var scrollDistance
 var element = document.getElementById("scroll-length")
+var menuBtn = document.querySelector('h3');
 
 window.addEventListener('scroll', function() {
   scroll =  (window.pageYOffset - 400) * 3 + "px";
@@ -9,6 +10,14 @@ window.addEventListener('scroll', function() {
   bol.style.borderRadius = scroll;
 
   element.innerHTML = window.pageYOffset + "px";  
+  // show/hide MENU button based on scroll position
+  if (menuBtn) {
+    if (window.pageYOffset >= 100) {
+      menuBtn.classList.add('visible');
+    } else {
+      menuBtn.classList.remove('visible');
+    }
+  }
 });
 
 var stickyImage = document.getElementsByClassName("sticky");
@@ -19,10 +28,14 @@ var liArray = Array.from(list.querySelectorAll("li"));
 
 var menuOn = true;
 function menu() {
+  if (window.pageYOffset < 100) {
+    return; // Don't open menu if scroll position is less than 100px
+  }
+  
   if (menuOn === true) {
     menuOn = false;
     stickyImage[0].style.opacity = 0;
-    nav.style.transform = "scaleX(1)";
+    nav.classList.add('open');
     list.style.opacity = 1;
     
     for (let index = 0; index < liArray.length ; index++) {
@@ -33,7 +46,7 @@ function menu() {
   } else if (menuOn === false) {
       menuOn = true;
     stickyImage[0].style.opacity = 1;
-    nav.style.transform = "scaleX(0)";
+    nav.classList.remove('open');
     list.style.opacity = 0;
     
     for (let index = 0; index < liArray.length ; index++) {
