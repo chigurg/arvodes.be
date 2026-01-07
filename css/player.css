@@ -269,18 +269,20 @@ button {
 ---------------------------------------------*/
 .infotext {
     font-family: 'SF Pro Display', sans-serif;
-    font-size: 1rem;
-    color: white;
-    background-color: #121212;
+    font-size: 3rem;
+    color: rgba(255, 0, 0, 1);
     margin: 0;
     padding: 0;
+    text-shadow: lightblue 2px 4px 2px;
 }
 
-
 .information {
+    color:#add8e6;
     display: block;
     position: relative;
-    text-align: left;
+    text-align: right;
+    padding-right: 1rem;
+    text-shadow: rgb(120, 120, 120) 2px 2px 0px;
 }
 
 @media (max-width: 500px) {

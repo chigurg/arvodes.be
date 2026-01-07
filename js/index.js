@@ -17,6 +17,7 @@ function initDOM() {
 }
 
 var address;
+var currentMode = null; // 'blips' | 'links' | null
 
 //functions
 function startPage() {
@@ -48,7 +49,13 @@ function back() {
 
 ////navigation
 function link() {
-  location.href = address + '.html';
+  // behave according to current mode
+  if (currentMode === 'blips') {
+    if (typeof showRadioAndPlay === 'function') showRadioAndPlay();
+    try { if (typeof startplayer === 'function') startplayer(); } catch (e) { console.warn('startplayer() error', e); }
+    return;
+  }
+  if (address) location.href = address;
 }
 
 ////index
@@ -67,7 +74,16 @@ function blips() {
   // show description of music collection and add a big listen button
   textBox.innerHTML = '<p>this is my collection of bleeps, bloops, songs, and everything sound i make and like in a small radio. click below to tune into a continuous mix.</p>' +
     '<div style="margin-top:1rem;"><button id="open-radio" style="font-size:1rem;padding:0.8rem 1rem;border-radius:6px;background:#222;color:#fff;border:0;cursor:pointer;">Listen to the Replyboy Radio</button></div>';
+  // Forward button becomes a play icon and will start the radio
+  currentMode = 'blips';
   address = null;
+  if (fwdButton) {
+    fwdButton.style.backgroundImage = 'url("/player/images/play.png")';
+    fwdButton.style.backgroundSize = 'contain';
+    fwdButton.style.backgroundRepeat = 'no-repeat';
+    fwdButton.style.backgroundPosition = 'center';
+    fwdButton.style.backgroundColor = 'transparent';
+  }
 }
 
 function blops() {
@@ -86,14 +102,31 @@ function showLinks() {
       <li><a href="mailto:arvomubiz@gmail.com">email</a></li>
     </ul>
   `;
-  address = null;
+  // Forward button should navigate to the last link shown in the container
+  currentMode = 'links';
+  // restore forward button appearance (arrow)
+  if (fwdButton) {
+    fwdButton.style.backgroundImage = 'url("/images/right_w.png")';
+    fwdButton.style.backgroundSize = 'cover';
+    fwdButton.style.backgroundRepeat = '';
+    fwdButton.style.backgroundColor = '';
+  }
+    const lastLink = document.querySelector('#content .links-list li:last-child a');
+    // double the font-size of the links list
+    const linksEl = document.querySelector('#content .links-list');
+    if (linksEl) {
+      // base size in CSS is 1.6rem; double it to 3.2rem
+      linksEl.style.fontSize = '3.2rem';
+    }
+  address = lastLink ? lastLink.href : null;
 }
 
 function about() {
   forwards();
   titleBox.innerHTML = "<h3>about</h3>";
   textBox.innerHTML = "<p>this is where i talk about me myself and i</p>";
-  address = "about";
+  currentMode = null;
+  address = "about.html";
 }
   
 

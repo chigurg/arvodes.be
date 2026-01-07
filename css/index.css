@@ -47,7 +47,7 @@ h1 a:hover {color: black; opacity: 0.8; transition: opacity 300ms linear;}
 
   background-color: #797979;
   opacity: 0.8;
-  background-image: repeating-radial-gradient(circle at 0 0, transparent 0, #797979 20px), repeating-linear-gradient(#00000055, #000000);
+  background-image: repeating-radial-gradient(circle at 0 0, transparent 0, #061efe 20px), repeating-linear-gradient(#ffcc00, #3700ff3e);
   background-image: -moz-radial-gradient (circle at 0 0, transparent 0, #797979 20px), -moz-repeating-radial-gradient (#00000055, #000000);
 
   
@@ -78,14 +78,16 @@ nav ul {
   transform: translate(10%, 50%);
   transition: transform 500ms ease-in-out;
 }
+
 nav ul a {
   position: absolute;
   text-decoration: none;
   font-size: 5rem;
   font-weight: 600;
-  color: rgba(255, 255, 255, 0.4);
+  color: rgba(255, 255, 255, 0.8);
   transition: all 200ms ease-out 10ms;
   transform-property: translate, color;
+  mix-blend-mode: difference;
   
   cursor: pointer;
 }
@@ -107,7 +109,7 @@ button{
 #back {
   height: 3.5rem;
   width: 3.5rem;
-  background: transparent no-repeat;
+  background:rgb(255, 221, 0);
   background-image: url(/images/left_w.png);
   background-size: cover;
   border: 0.4rem dashed hsla(0, 0%, 60%, 0.61);
@@ -152,6 +154,7 @@ button{
   height: auto;
   padding-right: 1rem;
   
+  background: rgba(0, 8, 255, 0.4);
   border: 0.5rem dashed gray;
   align-items: stretch;
   z-index: 100;
