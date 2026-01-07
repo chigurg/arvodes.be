@@ -62,6 +62,7 @@ html, body {
     margin-top: -3px; /* center the thumb on the track */
     box-shadow: none;
     cursor: pointer;
+    opacity: 0;
 }
 
 #timeline::-moz-range-track {

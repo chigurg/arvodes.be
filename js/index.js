@@ -72,8 +72,8 @@ function blips() {
   forwards();
   titleBox.innerHTML = "<h3>music</h3>";
   // show description of music collection and add a big listen button
-  textBox.innerHTML = '<p>this is my collection of bleeps, bloops, songs, and everything sound i make and like in a small radio. click below to tune into a continuous mix.</p>' +
-    '<div style="margin-top:1rem;"><button id="open-radio" style="font-size:1rem;padding:0.8rem 1rem;border-radius:6px;background:#222;color:#fff;border:0;cursor:pointer;">Listen to the Replyboy Radio</button></div>';
+  textBox.innerHTML = '<p>a collection of songs, blips, bloops, i made in a 30 min continuous mix. click below to tune in.</p>' +
+    '<div style="margin-top:1rem;"><button id="open-radio" style="font-size:1rem;padding:0.8rem 1rem;border-radius:6px;background:#222;color:#fff;border:0;cursor:pointer;">listen to radio</button></div>';
   // Forward button becomes a play icon and will start the radio
   currentMode = 'blips';
   address = null;
