@@ -4,7 +4,7 @@ var player;
 var playButton;
 var pauseButton;
 var progressEl = document.getElementById('timeline');
-var loopDuration = 2 * 60 * 60; // 2 hours in seconds
+var loopDuration = 0.5 * 60 * 60; // 2 hours in seconds
 var isRadioMode = true; // Enable radio sync mode
 
 playButton = document.getElementById("pause");
