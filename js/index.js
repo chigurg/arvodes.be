@@ -83,6 +83,8 @@ function blips() {
     fwdButton.style.backgroundRepeat = 'no-repeat';
     fwdButton.style.backgroundPosition = 'center';
     fwdButton.style.backgroundColor = 'transparent';
+    // hide forward button for blips mode
+    fwdButton.style.display = 'none';
   }
 }
 
@@ -110,6 +112,8 @@ function showLinks() {
     fwdButton.style.backgroundSize = 'cover';
     fwdButton.style.backgroundRepeat = '';
     fwdButton.style.backgroundColor = '';
+    // ensure forward button is visible when showing links
+    fwdButton.style.display = 'block';
   }
     const lastLink = document.querySelector('#content .links-list li:last-child a');
     // double the font-size of the links list
@@ -127,6 +131,7 @@ function about() {
   textBox.innerHTML = "<p>this is where i talk about me myself and i</p>";
   currentMode = null;
   address = "about.html";
+  if (fwdButton) fwdButton.style.display = 'block';
 }
   
 
@@ -144,12 +149,42 @@ window.link = link;
 document.addEventListener("DOMContentLoaded", function() {
   initDOM();
   startPage();
+  disableScroll();
 });
+
+// Hard-disable scrolling: prevent wheel/touchmove and common scroll keys
+function preventDefault(e){
+  if (e && e.preventDefault) e.preventDefault();
+  return false;
+}
+
+function preventDefaultForScrollKeys(e){
+  // space/pageup/pagedown/end/home/arrows
+  var keys = [32,33,34,35,36,37,38,39,40];
+  if (keys.indexOf(e.keyCode) !== -1) {
+    preventDefault(e);
+    return false;
+  }
+}
+
+function disableScroll(){
+  try{
+    window.addEventListener('DOMMouseScroll', preventDefault, false); // older Firefox
+    window.addEventListener('wheel', preventDefault, { passive: false });
+    window.addEventListener('touchmove', preventDefault, { passive: false });
+    window.addEventListener('keydown', preventDefaultForScrollKeys, false);
+    // also lock overflow styles as a fallback
+    document.documentElement.style.overflow = 'hidden';
+    document.body.style.overflow = 'hidden';
+  } catch(e){ console.warn('disableScroll error', e); }
+}
 
 // Show player iframe and start playback when user clicks the listen button
 function showRadioAndPlay() {
   const frame = document.getElementById('player-frame');
   if (!frame) return;
+  // Ensure iframe is fixed to viewport and not inside any transformed stacking context.
+  ensurePlayerFixed(frame);
   frame.style.display = 'block';
 
   // Try to access audio inside the iframe; if not yet loaded, wait for load
@@ -171,6 +206,26 @@ function showRadioAndPlay() {
   } catch (e) {
     // Cross-origin or other access error
     console.warn('Unable to access iframe audio directly', e);
+  }
+}
+
+// Ensure the player iframe is attached at the highest possible level and fixed to viewport.
+function ensurePlayerFixed(frame){
+  try {
+    // force absolute positioning and clear transforms
+    frame.style.position = 'absolute';
+    frame.style.bottom = '0px';
+    frame.style.left = '0px';
+    frame.style.width = '100%';
+    frame.style.transform = 'none';
+    frame.style.zIndex = '2147483647';
+    // move the iframe to the document body to escape transformed ancestors
+    var root = document.body || document.documentElement;
+    if (frame.parentNode !== root) {
+      root.appendChild(frame);
+    }
+  } catch (e) {
+    console.warn('ensurePlayerFixed error', e);
   }
 }
 

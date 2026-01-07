@@ -291,6 +291,16 @@ button {
     }
 }
 
+/* Responsive fallback for `.infotext` inside the player iframe so it doesn't overflow */
+@media (max-width: 800px) {
+    .infotext { font-size: 2rem; }
+}
+
+@media (max-width: 420px) {
+    .infotext { font-size: 1.6rem; }
+    .information { padding-right: 0.6rem; }
+}
+
 @keyframes timeline {
     0% {
         width: 0vw;

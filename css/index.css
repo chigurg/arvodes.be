@@ -8,11 +8,20 @@
   padding: 0;
 }
 
+/* Prevent any scrolling or overscroll gestures */
+html, body {
+  height: 100%;
+  overflow: hidden;
+  overscroll-behavior: none;
+  touch-action: none;
+}
+
 body {
   font-family: 'SF Pro Display', sans-serif;
-  overflow:hidden;
-  width: 100vw;
+  /* Fixed-height, no scrolling */
+  overflow: hidden;
   height: 100vh;
+  width: 100vw;
 }
 
 h1 {
@@ -48,7 +57,7 @@ h1 a:hover {color: black; opacity: 0.8; transition: opacity 300ms linear;}
   background-color: #797979;
   opacity: 0.8;
   background-image: repeating-radial-gradient(circle at 0 0, transparent 0, #061efe 20px), repeating-linear-gradient(#ffcc00, #3700ff3e);
-  background-image: -moz-radial-gradient (circle at 0 0, transparent 0, #797979 20px), -moz-repeating-radial-gradient (#00000055, #000000);
+  background-image: -moz-radial-gradient (circle at 0 0, transparent 0, #061efe 20px), -moz-repeating-radial-gradient (#ffcc00, #3700ff3e);
 
   
   z-index: 10;
@@ -178,7 +187,7 @@ button{
 #content {
   flex-grow: 1;
   font-size: 3rem;
-  color: rgb(196, 196, 196);
+  color: #ffcc00;
   text-shadow: lightblue 2px 4px 2px;
 }
 
@@ -211,8 +220,37 @@ button{
     width: 90%;
     right: 5%;
     top: 6rem;
-    font-size: 0.88;
+    font-size: 0.88rem;
   }
   #content {font-size: 2.2rem;}
   h1{display: none;}
+  /* scale navigation and title down on medium screens */
+  #title h3 { font-size: 3rem; }
+  #fwd { height: 6rem; width: 9rem; }
+}
+
+@media only screen and (max-width: 420px) {
+  #title h3 { font-size: 2rem; }
+  /* Slightly increase text inside #container for better readability on small screens */
+  #content { font-size: 2rem; }
+  .links-list { font-size: 1.4rem; }
+  /* move container down so it's positioned below the back button on small screens */
+  #container { right: 3%; top: 7.5rem; width: 94%; }
+  #fwd { height: 4.8rem; width: 7rem; right: 1rem; }
+  h1 { display: none; }
+}
+
+/* Player iframe: absolute placement at bottom of viewport (reparented to escape transformed ancestors) */
+#player-frame {
+  position: absolute !important;
+  bottom: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  z-index: 2147483647 !important;
+  transform: none !important;
+}
+
+@media only screen and (max-width: 420px) {
+  /* reduce iframe/player height on small screens */
+  #player-frame { height: 120px !important; }
 }
