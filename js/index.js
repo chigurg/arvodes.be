@@ -100,7 +100,7 @@ function showLinks() {
     <ul class="links-list">
       <li><a href="https://arvod.bandcamp.com/" target="_blank" rel="noopener">bandcamp</a></li>
       <li><a href="https://soundcloud.com/arvodes" target="_blank" rel="noopener">soundcloud</a></li>
-      <li><a href="https://www.instagram.com/arvo.ds" target="_blank" rel="noopener">instagram</a></li>
+      <li><a href="https://www.instagram.com/arvo.ad" target="_blank" rel="noopener">instagram</a></li>
       <li><a href="mailto:arvomubiz@gmail.com">email</a></li>
     </ul>
   `;
